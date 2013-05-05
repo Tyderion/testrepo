@@ -18,7 +18,7 @@ newnet="iface $interface inet static\naddress $ip\nnetmask $netmask\ngateway $ga
 netregex=".*iface $interface inet dhcp.*"
 sed -i.bak "s/$netregex/$newnet/" /etc/network/interfaces
 echo "Replacing $host with $pcname.$domain"
-sed -i.bak "s/$host/$pcname.$domain" /etc/hostname
+sed -i.bak "s/$host/$pcname.$domain/" /etc/hostname
 sed -i.bak "/127.0./ s/$host/$pcname.$domain $pcname/" /etc/hosts
 ifdown eth0 && ifup eth0
 echo "Installing samba4 prerequeistes"
